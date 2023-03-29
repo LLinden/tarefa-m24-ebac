@@ -10,7 +10,7 @@ module.exports = defineConfig({
       html: false,
       json: true,
     },
-    baseUrl: "http://lojaebac.ebaconline.art.br",
+    baseUrl: "http://localhost:3000/api/",
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
