@@ -53,7 +53,7 @@ Cypress.Commands.add("getAddressesId", (token, id) => {
     "patchAddresses",
     (token, id, rua, bairro, cidade, estado, cep) => {
       cy.request({
-        method: "PUT",
+        method: "PATCH",
         url: `addresses/${id}`,
         headers: { authorization: token },
         body: {
