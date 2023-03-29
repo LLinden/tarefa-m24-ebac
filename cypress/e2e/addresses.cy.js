@@ -1,14 +1,15 @@
 /// <reference types="cypress" />
 import { faker } from "@faker-js/faker";
+import postAddresses from "../contracts/addresses/postAddresses.contract";
 
-describe("Testes de API e contrato de endereços", () => {
+describe("Testes de Health Check e Contrato de endereços", () => {
   let token;
   let id;
-  let rua = faker.address.streetName;
-  let bairro = faker.address.countryCode;
-  let cidade = faker.address.city;
-  let estado = faker.address.countryCode;
-  let cep = faker.address.zipCode;
+  let rua = faker.address.streetName();
+  let bairro = faker.address.countryCode();
+  let cidade = faker.address.city();
+  let estado = faker.address.countryCode();
+  let cep = Math.floor(Math.random() * 8);
   let string = faker.random.alpha(10);
 
   before(() => {
@@ -25,12 +26,13 @@ describe("Testes de API e contrato de endereços", () => {
     });
   });
 
-  it("deve criar novo endereço com sucesso", () => {
+  it.only("deve criar novo endereço com sucesso", () => {
     cy.postAddresses(token, rua, bairro, cidade, estado, cep).then(
       (response) => {
         expect(response.status).to.equal(201);
         expect(response.body).to.have.property("id");
         expect(response.body.id).to.not.be.null;
+        return postAddresses.validateAsync(response.body)
       }
     );
   });
@@ -65,7 +67,7 @@ describe("Testes de API e contrato de endereços", () => {
     });
   });
 
-  it.only("deve criar adicionar informação no endereço por id vinculado a cliente", () => {
+  it("deve criar adicionar informação no endereço por id vinculado a cliente", () => {
     cy.postAddressesIdCustomers(token, id, string).then((response) => {
       expect(response.status).to.equal(201);
       expect(response.body).to.not.be.null;
