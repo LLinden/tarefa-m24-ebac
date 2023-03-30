@@ -163,7 +163,7 @@ Cypress.Commands.add("getAddressesId", (token, id) => {
 
   Cypress.Commands.add("getCustomerIdOrders", (token, customerid) => {
     cy.request({
-      method: "DELETE",
+      method: "GET",
       url: `customers/${customerid}/orders`,
       headers: { authorization: token },
       failOnStatusCode: false,

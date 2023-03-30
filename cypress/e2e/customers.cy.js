@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import { faker } from "@faker-js/faker";
+import postCustomers from "../contracts/customers/postCustomers.contract"
 
 describe("Testes de Health Check e Contrato de clientes", () => {
   let token;
@@ -44,11 +45,12 @@ describe("Testes de Health Check e Contrato de clientes", () => {
         expect(response.status).to.equal(201);
         expect(response.body).to.have.property("id");
         expect(response.body.id).to.not.be.null;
+        return postCustomers.validateAsync(response.body)
       }
     );
   });
 
-  it("deve buscar clientes com sucesso", () => {
+  it.only("deve buscar clientes com sucesso", () => {
     cy.getCustomers(token).then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body).to.not.be.null;
@@ -72,9 +74,16 @@ describe("Testes de Health Check e Contrato de clientes", () => {
     );
   });
 
-  it.only("deve excluir cliente pelo id com sucesso", () => {
+  it("deve excluir cliente pelo id com sucesso", () => {
     cy.deleteCustomerId(token, customerid).then((response) => {
       expect(response.status).to.equal(200);
+    });
+  });
+
+  it("deve buscar cliente pelo id vinculado a pedido", () => {
+    cy.getCustomerIdOrders(token, customerid).then((response) => {
+      expect(response.status).to.equal(200);
+      expect(response.body.id).to.not.be.null;
     });
   });
 });
