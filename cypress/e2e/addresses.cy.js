@@ -2,6 +2,7 @@
 import { faker } from "@faker-js/faker";
 import postAddresses from "../contracts/addresses/postAddresses.contract";
 import getAddresses from "../contracts/addresses/getAddresses.contract";
+import getAddressesId from "../contracts/addresses/getAddressesId.contract";
 import patchAddresses from "../contracts/addresses/patchAddresses.contract";
 import deleteAddresses from "../contracts/addresses/deleteAddresses.contract";
 
@@ -53,7 +54,7 @@ describe("Testes de Health Check e Contrato de endereços", () => {
     cy.getAddresses(token, id).then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body).to.not.be.null;
-      return getAddresses.validateAsync(response.body)
+      return getAddressesId.validateAsync(response.body)
     });
   });
 

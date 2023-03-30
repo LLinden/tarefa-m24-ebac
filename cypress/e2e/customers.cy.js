@@ -1,6 +1,10 @@
 /// <reference types="cypress" />
 import { faker } from "@faker-js/faker";
 import postCustomers from "../contracts/customers/postCustomers.contract"
+import getCustomers from "../contracts/customers/getCustomers.contract"
+import getCustomersId from "../contracts/customers/getCustomersId.contract"
+import patchCustomers from "../contracts/customers/patchCustomers.contract"
+import deleteCustomers from "../contracts/customers/deleteCustomers.contract"
 
 describe("Testes de Health Check e Contrato de clientes", () => {
   let token;
@@ -50,10 +54,11 @@ describe("Testes de Health Check e Contrato de clientes", () => {
     );
   });
 
-  it.only("deve buscar clientes com sucesso", () => {
+  it("deve buscar clientes com sucesso", () => {
     cy.getCustomers(token).then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body).to.not.be.null;
+      return getCustomers.validateAsync(response.body)
     });
   });
 
@@ -61,6 +66,7 @@ describe("Testes de Health Check e Contrato de clientes", () => {
     cy.getCustomersId(token, customerid).then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body).to.not.be.null;
+      return getCustomersId.validateAsync(response.body)
     });
   });
 
@@ -70,6 +76,7 @@ describe("Testes de Health Check e Contrato de clientes", () => {
         expect(response.status).to.equal(200);
         expect(response.body).to.have.property("id");
         expect(response.body.id).to.not.be.null;
+        return patchCustomers.validateAsync(response.body)
       }
     );
   });
@@ -77,6 +84,7 @@ describe("Testes de Health Check e Contrato de clientes", () => {
   it("deve excluir cliente pelo id com sucesso", () => {
     cy.deleteCustomerId(token, customerid).then((response) => {
       expect(response.status).to.equal(200);
+      return deleteCustomers.validateAsync(response.body)
     });
   });
 
@@ -84,6 +92,7 @@ describe("Testes de Health Check e Contrato de clientes", () => {
     cy.getCustomerIdOrders(token, customerid).then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body.id).to.not.be.null;
+      return getCustomers.validateAsync(response.body)
     });
   });
 });
