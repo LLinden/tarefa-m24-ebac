@@ -95,3 +95,77 @@ Cypress.Commands.add("getAddressesId", (token, id) => {
       failOnStatusCode: false,
     });
   });
+
+  Cypress.Commands.add(
+    "postCustomers",
+    (token, id, email, nome, sobrenome, telefone) => {
+      cy.request({
+        method: "POST",
+        url: "customers",
+        headers: { authorization: token },
+        body: {
+          address: {id: id},
+          email: email,
+          firstName: nome,
+          lastName: sobrenome,
+          phone: telefone,
+        },
+        failOnStatusCode: false,
+      });
+    }
+  );
+
+  Cypress.Commands.add("getCustomers", (token) => {
+    cy.request({
+      method: "GET",
+      url: "customers",
+      headers: { authorization: token },
+      failOnStatusCode: false,
+    });
+  });
+
+  Cypress.Commands.add("getCustomersId", (token, id) => {
+    cy.request({
+      method: "GET",
+      url: `customers/${id}`,
+      headers: { authorization: token },
+      failOnStatusCode: false,
+    });
+  });
+
+  Cypress.Commands.add(
+    "patchCustomers",
+    (token, id, customerid, email, nome, sobrenome, telefone) => {
+      cy.request({
+        method: "PATCH",
+        url: `customers/${customerid}`,
+        headers: { authorization: token },
+        body: {
+          address: {id: id},
+          email: email,
+          firstName: nome,
+          lastName: sobrenome,
+          phone: telefone,
+        },
+        failOnStatusCode: false,
+      });
+    }
+  );
+
+  Cypress.Commands.add("deleteCustomerId", (token, customerid) => {
+    cy.request({
+      method: "DELETE",
+      url: `customers/${customerid}`,
+      headers: { authorization: token },
+      failOnStatusCode: false,
+    });
+  });
+
+  Cypress.Commands.add("getCustomerIdOrders", (token, customerid) => {
+    cy.request({
+      method: "DELETE",
+      url: `customers/${customerid}/orders`,
+      headers: { authorization: token },
+      failOnStatusCode: false,
+    });
+  });
