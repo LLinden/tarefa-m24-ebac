@@ -15,7 +15,6 @@ describe("Testes de Health Check e Contrato de clientes", () => {
   let cidade = faker.address.city();
   let estado = faker.address.countryCode();
   let cep = Math.floor(Math.random() * 99999999);
-  let string = faker.random.alpha(10);
   let email = faker.internet.email();
   let nome = faker.name.firstName();
   let sobrenome = faker.name.lastName();
