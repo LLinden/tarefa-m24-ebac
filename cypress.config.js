@@ -7,8 +7,9 @@ module.exports = defineConfig({
     reporterOptions: {
       reportDir: "cypress/results",
       overwrite: false,
-      html: false,
-      json: true,
+      reportFilename: "index.html",
+      html: true,
+      json: false,
     },
     baseUrl: "http://localhost:3000/api/",
     setupNodeEvents(on, config) {
