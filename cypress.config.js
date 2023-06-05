@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: "erhum5",
   e2e: {
     watchForFileChanges: false,
     reporter: "mochawesome",
