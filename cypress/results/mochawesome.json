@@ -1,0 +1,200 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-26T17:01:00.518Z",
+    "end": "2023-06-26T17:01:01.422Z",
+    "duration": 904,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b32918ca-895a-4173-a738-27eab94df53f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\customers.cy.js",
+      "file": "cypress\\e2e\\customers.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8503aea6-2df3-4c21-a32f-705f7969e5d5",
+          "title": "Testes de Health Check e Contrato de clientes",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "deve adicionar cliente com sucesso",
+              "fullTitle": "Testes de Health Check e Contrato de clientes deve adicionar cliente com sucesso",
+              "timedOut": null,
+              "duration": 568,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postCustomers(token, id, email, nome, sobrenome, telefone).then(response => {\n  expect(response.status).to.equal(201);\n  expect(response.body).to.have.property(\"id\");\n  expect(response.body.id).to.not.be.null;\n  return _postCustomers.default.validateAsync(response.body);\n});",
+              "err": {},
+              "uuid": "5247b0aa-c4b4-4ad9-94d4-12d526880b53",
+              "parentUUID": "8503aea6-2df3-4c21-a32f-705f7969e5d5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve buscar clientes com sucesso",
+              "fullTitle": "Testes de Health Check e Contrato de clientes deve buscar clientes com sucesso",
+              "timedOut": null,
+              "duration": 56,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getCustomers(token).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.not.be.null;\n  return _getCustomers.default.validateAsync(response.body);\n});",
+              "err": {},
+              "uuid": "a693a4cd-9877-45db-951a-ada5f83d4a55",
+              "parentUUID": "8503aea6-2df3-4c21-a32f-705f7969e5d5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve buscar cliente pelo id com sucesso",
+              "fullTitle": "Testes de Health Check e Contrato de clientes deve buscar cliente pelo id com sucesso",
+              "timedOut": null,
+              "duration": 55,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getCustomersId(token, customerid).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.not.be.null;\n  return _getCustomersId.default.validateAsync(response.body);\n});",
+              "err": {},
+              "uuid": "cda3b513-5fc0-409c-911a-767f96ee6dda",
+              "parentUUID": "8503aea6-2df3-4c21-a32f-705f7969e5d5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve atualizar cliente com sucesso",
+              "fullTitle": "Testes de Health Check e Contrato de clientes deve atualizar cliente com sucesso",
+              "timedOut": null,
+              "duration": 72,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.patchCustomers(token, id, customerid, email, nome, sobrenome, telefone).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.have.property(\"id\");\n  expect(response.body.id).to.not.be.null;\n  return _patchCustomers.default.validateAsync(response.body);\n});",
+              "err": {},
+              "uuid": "27593bf8-a77b-4545-be3b-29011a466181",
+              "parentUUID": "8503aea6-2df3-4c21-a32f-705f7969e5d5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve excluir cliente pelo id com sucesso",
+              "fullTitle": "Testes de Health Check e Contrato de clientes deve excluir cliente pelo id com sucesso",
+              "timedOut": null,
+              "duration": 61,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.deleteCustomerId(token, customerid).then(response => {\n  expect(response.status).to.equal(200);\n  return _deleteCustomers.default.validateAsync(response.body);\n});",
+              "err": {},
+              "uuid": "635fb539-a8ea-4d1b-adb1-127c9d7dffb7",
+              "parentUUID": "8503aea6-2df3-4c21-a32f-705f7969e5d5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve buscar cliente pelo id vinculado a pedido",
+              "fullTitle": "Testes de Health Check e Contrato de clientes deve buscar cliente pelo id vinculado a pedido",
+              "timedOut": null,
+              "duration": 52,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getCustomerIdOrders(token, customerid).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body.id).to.not.be.null;\n  return _getCustomers.default.validateAsync(response.body);\n});",
+              "err": {},
+              "uuid": "57e747b6-9058-47d2-bb09-7eb02816619d",
+              "parentUUID": "8503aea6-2df3-4c21-a32f-705f7969e5d5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5247b0aa-c4b4-4ad9-94d4-12d526880b53",
+            "a693a4cd-9877-45db-951a-ada5f83d4a55",
+            "cda3b513-5fc0-409c-911a-767f96ee6dda",
+            "27593bf8-a77b-4545-be3b-29011a466181",
+            "635fb539-a8ea-4d1b-adb1-127c9d7dffb7",
+            "57e747b6-9058-47d2-bb09-7eb02816619d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 864,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
